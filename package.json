@@ -5,8 +5,12 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
+    "format": "terraform fmt -recursive",
+    "format:check":"terraform fmt -recursive -check",
     "start": "nx serve",
     "build": "nx build",
+    "deploy:dev": "bash ./terraform/deploy.sh dev",
+    "deploy:prod": "bash ./terraform/deploy.sh prod",
     "test": "nx test"
   },
   "private": true,
