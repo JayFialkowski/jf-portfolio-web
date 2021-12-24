@@ -5,7 +5,7 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 14.x
+      nodejs: 12
     commands:
       - npm ci
 #  build:
