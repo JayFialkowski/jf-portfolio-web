@@ -50,7 +50,7 @@ resource "aws_codebuild_project" "pipeline" {
 
   logs_config {
     cloudwatch_logs {
-      status = "ENABLED"
+      status = "DISABLED"
     }
     s3_logs {
       status = "DISABLED"
@@ -60,13 +60,29 @@ resource "aws_codebuild_project" "pipeline" {
   source {
     type                = "GITHUB"
     report_build_status = true
-    buildspec           = "buildspec.yml"
     location            = "https://github.com/JayFialkowski/jf-portfolio-web.git"
   }
+
   source_version = var.code_build_base_branch
 
   tags = {
     Environment = var.environment
     Project     = "portfolio"
   }
+}
+
+# CodeBuild webhook trigger
+
+resource "aws_codebuild_webhook" "trigger" {
+  project_name = aws_codebuild_project.pipeline.name
+  build_type   = "BUILD"
+
+  filter_group {
+    filter {
+      type    = "EVENT"
+      pattern = "PUSH"
+    }
+
+  }
+
 }
