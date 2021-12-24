@@ -8,11 +8,15 @@ phases:
       nodejs: 12
     commands:
       - npm ci
+  pre_build:
+    commands:
+      # apply terraform
+      - echo "TODO - terraform"
   build:
     commands:
       - echo build process started now
       - npm run build
   post_build:
     commands:
-       # upload dist to s3
+      # upload dist to s3
       - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read # --profile terraform
