@@ -1,12 +1,12 @@
 version: 0.2
 env:
   variables:
-    APP_NAME: "jf-portfolio-web-dev"
+    APP_NAME: "jf-portfolio-web"
 phases:
-  install
+  install:
     runtime-versions:
-      nodejs: 12.x
-    commands
+      nodejs: 14.x
+    commands:
       - npm ci
 #  build:
 #    commands:
