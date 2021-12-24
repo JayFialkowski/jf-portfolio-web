@@ -72,7 +72,6 @@ resource "aws_codebuild_project" "pipeline" {
 }
 
 # CodeBuild webhook trigger
-
 resource "aws_codebuild_webhook" "trigger" {
   project_name = aws_codebuild_project.pipeline.name
   build_type   = "BUILD"
@@ -81,6 +80,10 @@ resource "aws_codebuild_webhook" "trigger" {
     filter {
       type    = "EVENT"
       pattern = "PUSH"
+    }
+    filter {
+      type    = "HEAD_REF"
+      pattern = var.code_build_base_branch
     }
 
   }
