@@ -12,6 +12,9 @@ phases:
     commands:
       - echo build process started now
       - npm run build
+  terraform:
+    commands:
+      - echo TODO: terraform
   post_build:
     commands:
        # upload dist to s3
