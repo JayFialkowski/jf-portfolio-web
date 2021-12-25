@@ -63,7 +63,7 @@ resource "aws_codebuild_project" "pipeline" {
     location            = "https://github.com/JayFialkowski/jf-portfolio-web.git"
   }
 
-  source_version = var.code_build_base_branch
+  source_version = var.environment != "sandbox" ? var.code_build_base_branch : null
 
   tags = {
     Environment = var.environment
@@ -82,8 +82,9 @@ resource "aws_codebuild_webhook" "trigger" {
       pattern = "PUSH"
     }
     filter {
-      type    = "HEAD_REF"
-      pattern = var.code_build_base_branch
+      type                    = "HEAD_REF"
+      pattern                 = coalesce(aws_codebuild_project.pipeline.source_version, "^(master|develop)$")
+      exclude_matched_pattern = var.environment == "sandbox"
     }
 
   }
