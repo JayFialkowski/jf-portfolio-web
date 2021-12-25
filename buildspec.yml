@@ -14,7 +14,6 @@ phases:
       - echo "TODO - terraform"
   build:
     commands:
-      - echo build process started now
       - npm run build
   post_build:
     commands:
