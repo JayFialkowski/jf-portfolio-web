@@ -22,6 +22,7 @@ phases:
     commands:
       # apply terraform
       - echo terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
+      - echo $AWS_ACCESS_KEY_ID
       - terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
       - terraform -chdir=./terraform state pull
       - terraform -chdir=./terraform apply -var-file=./$deploy_env.tfvars -auto-approve
