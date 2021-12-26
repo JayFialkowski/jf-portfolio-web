@@ -115,7 +115,6 @@ resource "aws_codebuild_project" "pipeline" {
 
   source {
     type                = "GITHUB"
-    report_build_status = true
     location            = "https://github.com/JayFialkowski/jf-portfolio-web.git"
   }
 
