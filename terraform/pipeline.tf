@@ -1,6 +1,6 @@
 # CodeBuild role
 resource "aws_iam_role" "code_build" {
-  name = "jf-portfolio-web-code-build-role"
+  name = "jf-portfolio-web-code-build-role-${var.environment}"
 
   assume_role_policy = jsonencode(
     {
@@ -17,11 +17,15 @@ resource "aws_iam_role" "code_build" {
     }
   )
 
+  managed_policy_arns = [
+    var.code_build_managed_policy_arn # TODO - need to figure out how to retrieve this dynamically
+  ]
+
 }
 
 resource "aws_iam_role_policy" "code_build_role_policy" {
   name = "terraform_policy"
-  role = aws_iam_role.code_build.name
+  role = aws_iam_role.code_build.id
   policy = jsonencode(
     {
       "Version" : "2012-10-17",
@@ -29,18 +33,7 @@ resource "aws_iam_role_policy" "code_build_role_policy" {
         {
           "Effect" : "Allow",
           "Resource" : [
-            "*"
-          ],
-          "Action" : [
-            "logs:CreateLogGroup",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents"
-          ]
-        },
-        {
-          "Effect" : "Allow",
-          "Resource" : [
-            "${aws_s3_bucket.state_bucket.arn}/*.terraform.tfstate"
+            "${aws_s3_bucket.state_bucket.arn}/*.terraform.state"
           ],
           "Action" : [
             "s3:GetObject",
@@ -62,6 +55,16 @@ resource "aws_codebuild_project" "pipeline" {
   service_role           = aws_iam_role.code_build.arn
   badge_enabled          = true
 
+  # typically, these environment variables would be key names in SecretsManager,
+  # but that is a paid feature and this is a demo project - so instead the id/key are
+  # managed manually in AWS Console and ignored by terraform
+  lifecycle {
+    ignore_changes = [
+      "environment[0].environment_variable[0]",
+      "environment[0].environment_variable[1]",
+    ]
+  }
+
   artifacts {
     type = "NO_ARTIFACTS"
   }
@@ -75,6 +78,25 @@ resource "aws_codebuild_project" "pipeline" {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "aws/codebuild/amazonlinux2-x86_64-standard:3.0"
     image_pull_credentials_type = "CODEBUILD"
+
+    environment_variable {
+      name  = "AWS_ACCESS_KEY_ID"
+      value = ""
+      type  = "PLAINTEXT"
+    }
+
+    environment_variable {
+      name  = "AWS_SECRET_ACCESS_KEY"
+      value = ""
+      type  = "PLAINTEXT"
+    }
+
+    environment_variable {
+      name  = "AWS_DEFAULT_REGION"
+      value = "us-east-1"
+      type  = "PLAINTEXT"
+    }
+
     environment_variable {
       name  = "deploy_env"
       value = var.environment
