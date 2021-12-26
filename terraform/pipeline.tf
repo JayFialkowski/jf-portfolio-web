@@ -34,6 +34,16 @@ resource "aws_iam_role_policy" "code_build_role_policy" {
             "logs:CreateLogStream",
             "logs:PutLogEvents"
           ]
+        },
+        {
+          "Effect" : "Allow",
+          "Resource" : [
+            aws_s3_bucket.state_bucket.arn
+          ],
+          "Action" : [
+            "s3:GetObject",
+            "s3:PutObject"
+          ]
         }
       ]
     }

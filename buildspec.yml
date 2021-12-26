@@ -2,6 +2,7 @@ version: 0.2
 env:
   variables:
     APP_NAME: "jf-portfolio-web"
+    TF_IN_AUTOMATION: true
 phases:
   install:
     runtime-versions:
