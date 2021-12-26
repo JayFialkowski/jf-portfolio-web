@@ -20,11 +20,13 @@ phases:
   pre_build:
     commands:
       # apply terraform
-      - echo "TODO - terraform"
+      - terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
+      - terraform -chdir=./terraform state pull
+      - terraform -chdir=./terraform apply -var-file=./$deploy_env.tfvars -auto-approve
   build:
     commands:
       - npm run build
   post_build:
     commands:
       # upload dist to s3
-      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read # --profile terraform
+      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read
