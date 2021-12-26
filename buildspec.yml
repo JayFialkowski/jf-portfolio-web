@@ -2,20 +2,34 @@ version: 0.2
 env:
   variables:
     APP_NAME: "jf-portfolio-web"
+    TF_IN_AUTOMATION: true
 phases:
   install:
     runtime-versions:
       nodejs: 12
     commands:
+      # install NPM dependencies
       - npm ci
+      # install terraform
+      - curl -s -qL -o terraform_install.zip https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_linux_amd64.zip
+      - unzip terraform_install.zip -d /usr/bin/
+      - chmod +x /usr/bin/terraform
+    finally:
+      - node --version
+      - npm --version
+      - terraform --version
   pre_build:
     commands:
       # apply terraform
-      - echo "TODO - terraform"
+      - echo terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
+      - echo $AWS_ACCESS_KEY_ID
+      - terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
+      - terraform -chdir=./terraform state pull
+      - terraform -chdir=./terraform apply -var-file=./$deploy_env.tfvars -auto-approve
   build:
     commands:
       - npm run build
   post_build:
     commands:
       # upload dist to s3
-      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read # --profile terraform
+      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read
