@@ -12,6 +12,28 @@ resource "aws_iam_role" "code_build" {
             "Service" : "codebuild.amazonaws.com"
           },
           "Action" : "sts:AssumeRole"
+        },
+      ]
+    }
+  )
+}
+
+resource "aws_iam_role_policy" "code_build_role_policy" {
+  role = aws_iam_role.code_build.name
+  policy = jsonencode(
+    {
+      "Version" : "2012-10-17",
+      "Statement" : [
+        {
+          "Effect" : "Allow",
+          "Resource" : [
+            "*"
+          ],
+          "Action" : [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+          ]
         }
       ]
     }
@@ -50,7 +72,7 @@ resource "aws_codebuild_project" "pipeline" {
 
   logs_config {
     cloudwatch_logs {
-      status = "DISABLED"
+      status = "ENABLED"
     }
     s3_logs {
       status = "DISABLED"
