@@ -16,9 +16,11 @@ resource "aws_iam_role" "code_build" {
       ]
     }
   )
+
 }
 
 resource "aws_iam_role_policy" "code_build_role_policy" {
+  name = "terraform_policy"
   role = aws_iam_role.code_build.name
   policy = jsonencode(
     {
@@ -38,7 +40,7 @@ resource "aws_iam_role_policy" "code_build_role_policy" {
         {
           "Effect" : "Allow",
           "Resource" : [
-            aws_s3_bucket.state_bucket.arn
+            "${aws_s3_bucket.state_bucket.arn}/*.terraform.tfstate"
           ],
           "Action" : [
             "s3:GetObject",
