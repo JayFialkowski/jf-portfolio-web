@@ -114,8 +114,8 @@ resource "aws_codebuild_project" "pipeline" {
   }
 
   source {
-    type                = "GITHUB"
-    location            = "https://github.com/JayFialkowski/jf-portfolio-web.git"
+    type     = "GITHUB"
+    location = "https://github.com/JayFialkowski/jf-portfolio-web.git"
   }
 
   source_version = var.environment != "sandbox" ? var.code_build_base_branch : null

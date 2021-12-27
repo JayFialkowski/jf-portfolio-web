@@ -34,8 +34,22 @@ resource "aws_s3_bucket" "website_bucket" {
     error_document = "error.html"
   }
 
-  tags = {
+  tags = merge(var.tags, {
     Environment = var.environment
-    Project     = "portfolio"
+  })
+}
+
+resource "aws_s3_bucket" "website_redirect" {
+  bucket        = "${aws_s3_bucket.website_bucket.bucket}-redirect"
+  acl           = "public-read"
+  force_destroy = true
+  count         = local.count
+
+  website {
+    redirect_all_requests_to = "https://${var.website_domain_main}"
   }
+
+  tags = merge(var.tags, {
+    Environment = var.environment
+  })
 }
