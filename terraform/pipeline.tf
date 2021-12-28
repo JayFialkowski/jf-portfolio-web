@@ -60,8 +60,8 @@ resource "aws_codebuild_project" "pipeline" {
   # managed manually in AWS Console and ignored by terraform
   lifecycle {
     ignore_changes = [
-      "environment[0].environment_variable[0]",
-      "environment[0].environment_variable[1]",
+      environment.0.environment_variable.0,
+      environment.0.environment_variable.1,
     ]
   }
 
