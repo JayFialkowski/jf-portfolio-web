@@ -1,0 +1,20 @@
+@import "./variables";
+
+/**
+  * Visibility utility classes
+  * hide-for-{breakpoint}
+  * show-for-{breakpoint}
+ */
+@each $name, $size in $breakpoints {
+  @media screen and (min-width: $size) {
+    .hide-for-#{$name} {
+      display: none !important;
+    }
+
+  }
+  @media screen and (max-width: $size - 1px) {
+    .show-for-#{$name} {
+      display: none !important;
+    }
+  }
+}

@@ -6,7 +6,7 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "format": "terraform fmt -recursive",
-    "format:check":"terraform fmt -recursive -check",
+    "format:check": "terraform fmt -recursive -check",
     "start": "nx serve",
     "build": "nx build",
     "deploy:dev": "bash ./terraform/deploy.sh dev",
@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@nrwl/angular": "13.4.0",
+    "bootstrap-icons": "^1.7.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"

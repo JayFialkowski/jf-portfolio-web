@@ -33,5 +33,5 @@ phases:
       # upload dist to s3
       - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$DEPLOY_ENV/ --delete --acl public-read
       # invalidate cloudfront cache
-      - DISTRIBUTION_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,alias:Aliases.Items[0]}[?alias=='$DOMAIN']" --output text | awk '{print $NF}')
-      - aws cloudfront create-invalidation --distribution-id=$DISTRIBUTION_ID --paths /*
+#      - DISTRIBUTION_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,alias:Aliases.Items[0]}[?alias=='$DOMAIN']" --output text | awk '{print $NF}')
+#      - aws cloudfront create-invalidation --distribution-id=$DISTRIBUTION_ID --paths /*

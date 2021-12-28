@@ -53,16 +53,7 @@ resource "aws_cloudfront_distribution" "website_root" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
 
-    min_ttl     = "0"
-    default_ttl = "300"
-    max_ttl     = "1200"
-
-    forwarded_values {
-      query_string = true
-      cookies {
-        forward = "none"
-      }
-    }
+    cache_policy_id = data.aws_cloudfront_cache_policy.cache_policy.id
   }
 
   restrictions {
@@ -82,6 +73,11 @@ resource "aws_cloudfront_distribution" "website_root" {
     response_page_path    = "/404.html"
     response_code         = 404
   }
+
+#  logging_config {
+#    bucket = aws_s3_bucket.logging_bucket.bucket_domain_name
+#    prefix = "${local.domain}/"
+#  }
 
   tags = merge(var.tags, {
     Environment = var.environment
@@ -113,16 +109,7 @@ resource "aws_cloudfront_distribution" "website_redirect" {
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
 
-    min_ttl     = "0"
-    default_ttl = "300"
-    max_ttl     = "1200"
-
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+    cache_policy_id = data.aws_cloudfront_cache_policy.cache_policy.id
   }
 
   restrictions {
@@ -144,5 +131,5 @@ resource "aws_cloudfront_distribution" "website_redirect" {
 
 # retrieve entity to avoid hardcoding default policy uuid
 data "aws_cloudfront_cache_policy" "cache_policy" {
-  name = "Managed-CachingOptimized"
+  name = "Managed-CachingDisabled"
 }

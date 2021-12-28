@@ -1,0 +1,75 @@
+@import "./functions";
+
+$portfolio-colors: (
+  "primary": #6C757D,
+  "secondary": #444C5C,
+  "foreground": #313A46,
+  "background": #FAFBFE
+);
+
+@function color($name, $level: 500) {
+  $neutral: 500;
+  $color: map-get($portfolio-colors, $name);
+
+  @if ($level == 500) {
+    @return $color
+  } @else if ($level < 500) {
+    @return lighten($color, ($level - 500) / 100);
+  } @else {
+    @return darken($color, ($level - 500) / 100);
+  }
+}
+
+/*
+    --bs-blue: #2c8ef8;
+    --bs-indigo: #727cf5;
+    --bs-purple: #6b5eae;
+    --bs-pink: #ff679b;
+    --bs-red: #fa5c7c;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffbc00;
+    --bs-green: #0acf97;
+    --bs-teal: #02a8b5;
+    --bs-cyan: #39afd1;
+    --bs-white: #fff;
+    --bs-gray: #98a6ad;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f1f3fa;
+    --bs-gray-200: #eef2f7;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #98a6ad;
+    --bs-gray-700: #6c757d;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #313a46;
+    --bs-primary: #727cf5;
+    --bs-secondary: #6c757d;
+    --bs-success: #0acf97;
+    --bs-info: #39afd1;
+    --bs-warning: #ffbc00;
+    --bs-danger: #fa5c7c;
+    --bs-light: #eef2f7;
+    --bs-dark: #313a46;
+    --bs-primary-rgb: 114,124,245;
+    --bs-secondary-rgb: 108,117,125;
+    --bs-success-rgb: 10,207,151;
+    --bs-info-rgb: 57,175,209;
+    --bs-warning-rgb: 255,188,0;
+    --bs-danger-rgb: 250,92,124;
+    --bs-light-rgb: 238,242,247;
+    --bs-dark-rgb: 49,58,70;
+    --bs-white-rgb: 255,255,255;
+    --bs-black-rgb: 0,0,0;
+    --bs-body-color-rgb: 108,117,125;
+    --bs-body-bg-rgb: 250,251,254;
+    --bs-font-sans-serif: "Nunito",sans-serif;
+    --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: Nunito,sans-serif;
+    --bs-body-font-size: 0.9rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #6c757d;
+    --bs-body-bg: #fafbfe;
+ */
