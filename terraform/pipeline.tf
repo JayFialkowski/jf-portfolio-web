@@ -105,7 +105,7 @@ resource "aws_codebuild_project" "pipeline" {
 
     environment_variable {
       name  = "DOMAIN"
-      type = "PLAINTEXT"
+      type  = "PLAINTEXT"
       value = local.domain
     }
   }
