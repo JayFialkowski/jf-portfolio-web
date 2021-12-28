@@ -28,6 +28,7 @@ phases:
   build:
     commands:
       - npm run build
+    on-failure: ABORT
   post_build:
     commands:
       # upload dist to s3
