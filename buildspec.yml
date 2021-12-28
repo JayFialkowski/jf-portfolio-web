@@ -21,14 +21,17 @@ phases:
   pre_build:
     commands:
       # apply terraform
-      - echo terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
-      - terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$deploy_env.hcl
+      - echo terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$DEPLOY_ENV.hcl
+      - terraform -chdir=./terraform init -reconfigure -backend-config=./envs/$DEPLOY_ENV.hcl
       - terraform -chdir=./terraform state pull
-      - terraform -chdir=./terraform apply -var-file=./$deploy_env.tfvars -auto-approve
+      - terraform -chdir=./terraform apply -var-file=./$DEPLOY_ENV.tfvars -auto-approve
   build:
     commands:
       - npm run build
   post_build:
     commands:
       # upload dist to s3
-      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$deploy_env/ --delete --acl public-read
+      - aws s3 sync ./dist/apps/web s3://jf-portfolio-web-$DEPLOY_ENV/ --delete --acl public-read
+      # invalidate cloudfront cache
+      - DISTRIBUTION_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,alias:Aliases.Items[0]}[?alias=='$DOMAIN']" --output text | awk '{print $NF}')
+      - aws cloudfront create-invalidation --distribution-id=$DISTRIBUTION_ID --paths /*

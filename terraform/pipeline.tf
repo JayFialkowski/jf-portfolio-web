@@ -60,8 +60,8 @@ resource "aws_codebuild_project" "pipeline" {
   # managed manually in AWS Console and ignored by terraform
   lifecycle {
     ignore_changes = [
-      "environment[0].environment_variable[0]",
-      "environment[0].environment_variable[1]",
+      environment.0.environment_variable.0,
+      environment.0.environment_variable.1,
     ]
   }
 
@@ -81,26 +81,32 @@ resource "aws_codebuild_project" "pipeline" {
 
     environment_variable {
       name  = "AWS_ACCESS_KEY_ID"
-      value = ""
       type  = "PLAINTEXT"
+      value = ""
     }
 
     environment_variable {
       name  = "AWS_SECRET_ACCESS_KEY"
-      value = ""
       type  = "PLAINTEXT"
+      value = ""
     }
 
     environment_variable {
       name  = "AWS_DEFAULT_REGION"
-      value = "us-east-1"
       type  = "PLAINTEXT"
+      value = "us-east-1"
     }
 
     environment_variable {
-      name  = "deploy_env"
-      value = var.environment
+      name  = "DEPLOY_ENV"
       type  = "PLAINTEXT"
+      value = var.environment
+    }
+
+    environment_variable {
+      name  = "DOMAIN"
+      type  = "PLAINTEXT"
+      value = local.domain
     }
   }
 
