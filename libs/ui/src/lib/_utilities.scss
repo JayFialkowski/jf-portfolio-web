@@ -24,6 +24,12 @@
   }
 }
 
+@each $align in (center) {
+  .align-items-#{$align} {
+    align-items: $align;
+  }
+}
+
 @each $direction in (gap, column-gap, row-gap) {
   @each $size, $px in $spacing {
     .d-flex-#{$direction}-#{$size} {

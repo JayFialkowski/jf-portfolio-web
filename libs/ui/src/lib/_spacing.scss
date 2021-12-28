@@ -16,7 +16,7 @@ $spacing-directions: (
 
 @each $spacingAttribute, $spacingAttributeKey in $spacing-attributes {
   @each $direction, $directionKey in $spacing-directions {
-    @each $size, $px in $spacing {
+    @each $size, $px in map-merge($spacing, (auto: auto)) {
       @if ($direction == vertical) {
         .#{$spacingAttributeKey}#{$directionKey}-#{$size} {
           #{$spacingAttribute}-left: $px;

@@ -49,7 +49,6 @@ export class ResumeComponent {
         // captech experience
         {
             title: 'CapTech Consulting',
-            timeline: '2017 - Present',
             items: [
                 {
                     title: 'Capital One',
