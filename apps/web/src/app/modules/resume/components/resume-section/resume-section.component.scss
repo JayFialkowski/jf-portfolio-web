@@ -1,0 +1,14 @@
+@import "./libs/ui/src/lib/colors";
+@import "./libs/ui/src/lib/variables";
+
+.resume-section {
+  h2 {
+    margin-bottom: map-get($spacing, "md");
+    padding-bottom: map-get($spacing, "sm");
+    border-bottom: 2px solid color("accent");
+  }
+
+  .resume-section-item:not(:first-of-type) {
+    margin-top: map-get($spacing, "lg");
+  }
+}

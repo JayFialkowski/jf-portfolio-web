@@ -1,0 +1,14 @@
+@import "./libs/ui/src/lib/variables";
+
+.resume {
+  padding: 32px 0 48px;
+
+  .resume-link {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  jf-resume-section:not(:first-of-type)::ng-deep .resume-section {
+    margin-top: map-get($spacing, "xl");
+  }
+}

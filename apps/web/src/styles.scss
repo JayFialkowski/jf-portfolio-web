@@ -1,4 +1,6 @@
 @import "~bootstrap-icons/font/bootstrap-icons";
+@import "~purecss/build/grids-min.css";
+@import "~purecss/build/grids-responsive-min.css";
 @import "libs/ui/src/lib/core";
 
 html body {
@@ -29,4 +31,10 @@ html body {
   font-family: Nunito;
   src: url(assets/fonts/Nunito-Regular.ttf);
   font-style: normal
+}
+
+@font-face {
+  font-family: Nunito-SemiBold;
+  src: url(assets/fonts/Nunito-SemiBold.ttf);
+  font-style: normal;
 }

@@ -1,38 +1,39 @@
 <nav>
-  <ul>
-    <li>
-      <a [routerLink]="['/']">
-        <i class="bi bi-house-fill hide-for-md"></i>
-        <span class="show-for-md">Home</span>
-      </a>
-    </li>
-    <li>
-      <a [routerLink]="['/', 'resume']">
-        <i class="bi bi-file-earmark-person-fill hide-for-md"></i>
-        <span class="show-for-md">Resume</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="bi bi-chat-fill hide-for-md"></i>
-        <span class="show-for-md">Contact</span>
-      </a>
-    </li>
-  </ul>
+  <div class="container d-flex justify-content-space-between">
+    <ul>
+      <li>
+        <a [routerLink]="['/']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" aria-label="Home">
+          <i class="bi bi-house-fill hide-for-md"></i>
+          <span class="show-for-md">Home</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/resume']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" aria-label="Resume">
+          <i class="bi bi-file-earmark-person-fill hide-for-md"></i>
+          <span class="show-for-md">Resume</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/contact']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" aria-label="Contact">
+          <i class="bi bi-chat-fill hide-for-md"></i>
+          <span class="show-for-md">Contact</span>
+        </a>
+      </li>
+    </ul>
 
-  <ul>
-    <li>
-      <a href="https://github.com/JayFialkowski/jf-portfolio-web" target="_blank">
-        <i class="bi bi-github"></i>
-        <span class="show-for-md">GitHub</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/jayfialkowski/" target="_blank">
-        <i class="bi bi-linkedin"></i>
-        <span class="show-for-md">LinkedIn</span>
-      </a>
-    </li>
-  </ul>
-
+    <ul>
+      <li>
+        <a href="https://github.com/JayFialkowski/jf-portfolio-web" target="_blank" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+          <span class="show-for-md">GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/jayfialkowski/" target="_blank" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+          <span class="show-for-md">LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>

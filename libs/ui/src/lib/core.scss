@@ -1,3 +1,11 @@
 @import "./colors";
 @import "./functions";
+@import "./layout";
+@import "./spacing";
+@import "./typography";
 @import "./utilities";
+
+*:focus:not(:active) {
+  outline: 2px solid color("accent");
+  outline-offset: 2px;
+}
