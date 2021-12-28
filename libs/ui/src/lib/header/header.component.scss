@@ -5,35 +5,40 @@ nav {
   background-color: color("primary");
   overflow: hidden;
 
-  ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    column-gap: 0.25rem;
+  .container {
+    overflow: visible;
 
-    li {
+    ul {
       display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      column-gap: 0.25rem;
 
-      a {
+      li {
         display: flex;
-        column-gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        text-decoration: none;
-        color: white;
-        user-select: none;
 
-        &.active, &:hover {
-          background-color: color("secondary");
-        }
-        &:active {
-          background-color: color("secondary", 700);
-          color: color("accent");
-        }
+        a {
+          display: flex;
+          column-gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          border-radius: 0.375rem;
+          text-decoration: none;
+          color: white;
+          user-select: none;
 
-        i {
-          color: color("accent");
+          &.active, &:hover {
+            background-color: color("secondary");
+          }
+
+          &:active {
+            background-color: color("secondary", 700);
+            color: color("accent");
+          }
+
+          i {
+            color: color("accent");
+          }
         }
       }
     }

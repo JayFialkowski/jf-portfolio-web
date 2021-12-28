@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ResumeSectionDetail} from '../../models';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     templateUrl: './resume.component.html',
@@ -107,4 +108,8 @@ export class ResumeComponent {
             ]
         }
     ];
+
+    constructor(private readonly title: Title) {
+        title.setTitle('Jay Fialkowski - Resume')
+    }
 }
