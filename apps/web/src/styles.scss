@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons";
+@import "libs/ui/src/lib/core";
+
+html body {
+  margin: 0;
+  height: 100vh;
+
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .header {
+      flex-grow: 0;
+    }
+
+    .body {
+      flex-grow: 1;
+      background-color: color("background");
+    }
+  }
+}
+
+
+@font-face {
+  font-family: Nunito;
+  src: url(assets/fonts/Nunito-Regular.ttf);
+  font-style: normal
+}
