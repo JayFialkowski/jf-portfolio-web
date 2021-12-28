@@ -1,19 +1,19 @@
 <nav>
   <ul>
     <li>
-      <a [routerLink]="['/']">
+      <a [routerLink]="['/home']" routerLinkActive="active">
         <i class="bi bi-house-fill hide-for-md"></i>
         <span class="show-for-md">Home</span>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/', 'resume']">
+      <a [routerLink]="['/resume']" routerLinkActive="active">
         <i class="bi bi-file-earmark-person-fill hide-for-md"></i>
         <span class="show-for-md">Resume</span>
       </a>
     </li>
     <li>
-      <a href="#">
+      <a [routerLink]="['/contact']" routerLinkActive="active">
         <i class="bi bi-chat-fill hide-for-md"></i>
         <span class="show-for-md">Contact</span>
       </a>
