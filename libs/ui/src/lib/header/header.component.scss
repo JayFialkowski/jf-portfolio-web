@@ -6,6 +6,7 @@ nav {
   padding: 0.5rem 1rem;
   background-color: color("foreground");
   border-bottom: 1px solid darkgray;
+  overflow: hidden;
 
   ul {
     display: flex;
