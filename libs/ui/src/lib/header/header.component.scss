@@ -1,9 +1,7 @@
 @import "../../lib/_colors.scss";
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   background-color: color("primary");
   overflow: hidden;
 
@@ -31,6 +29,11 @@ nav {
         }
         &:active {
           background-color: color("secondary", 700);
+          color: color("accent");
+        }
+
+        i {
+          color: color("accent");
         }
       }
     }

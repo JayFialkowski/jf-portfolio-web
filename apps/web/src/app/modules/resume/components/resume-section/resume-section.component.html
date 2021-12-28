@@ -1,0 +1,21 @@
+<div class="resume-section">
+  <div class="resume-section-header d-flex justify-content-space-between">
+    <h2>{{model.title}}</h2>
+    <h3 *ngIf="model.timeline">{{model.timeline}}</h3>
+  </div>
+
+  <div *ngFor="let item of model.items" class="resume-section-item">
+    <div class="d-flex justify-content-space-between">
+      <h3>{{item.title}}</h3>
+      <h4>{{item.timeline}}</h4>
+    </div>
+    <ul class="list">
+      <li *ngFor="let listItem of item.list">{{listItem}}</li>
+    </ul>
+    <div class="d-flex d-flex-gap-sm px-md">
+      <jf-pill *ngFor="let tool of item.tools ?? []">
+        {{tool}}
+      </jf-pill>
+    </div>
+  </div>
+</div>

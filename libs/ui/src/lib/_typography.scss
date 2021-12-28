@@ -6,7 +6,6 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: color("primary");
   margin: 0;
 }
 
@@ -35,9 +34,21 @@ a.link {
     text-decoration: underline;
     text-decoration-skip: spaces;
     text-underline-offset: 2px;
+    text-underline-color: color("accent");
 
     i {
       text-decoration: none;
     }
+  }
+
+  &:active {
+    color: color("accent")
+  }
+}
+
+// lists
+ul.list {
+  li::marker {
+    color: color("accent");
   }
 }

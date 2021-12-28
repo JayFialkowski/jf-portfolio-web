@@ -1,0 +1,15 @@
+@import "./libs/ui/src/lib/_colors.scss";
+
+span.pill {
+  padding: 0.125rem 0.375rem;
+  font-family: "Nunito-SemiBold", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+
+  &.pill-primary {
+    color: white;
+    background-color: color("accent");
+    border-radius: 4px;
+  }
+}
