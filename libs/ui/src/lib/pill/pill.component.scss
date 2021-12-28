@@ -6,10 +6,15 @@ span.pill {
   font-size: 0.75rem;
   letter-spacing: 0.2px;
   white-space: nowrap;
+  border-radius: 4px;
 
   &.pill-primary {
     color: white;
     background-color: color("accent");
-    border-radius: 4px;
+  }
+
+  &.pill-danger {
+    color: white;
+    background-color: color("danger");
   }
 }

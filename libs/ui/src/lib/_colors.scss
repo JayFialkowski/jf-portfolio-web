@@ -3,7 +3,8 @@
 $portfolio-colors: (
   "primary": #313A46,
   "secondary": #6C757D,
-  "accent": darkseagreen,
+  "accent": #8FBC8F,
+  "danger": #D26466,
   "foreground": #444C5C,
   "background": #FAFBFE
 );
@@ -15,9 +16,9 @@ $portfolio-colors: (
   @if ($level == 500) {
     @return $color
   } @else if ($level < 500) {
-    @return lighten($color, abs($level - 500) / 100);
+    @return lighten($color, abs($level - 500) / 10);
   } @else {
-    @return darken($color, abs($level - 500) / 100);
+    @return darken($color, abs($level - 500) / 10);
   }
 }
 

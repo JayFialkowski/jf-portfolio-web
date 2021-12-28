@@ -10,9 +10,11 @@ import {Title} from '@angular/platform-browser';
 
 export class ResumeComponent {
 
+    readonly resumeUrl: string = '/assets/jay_fialkowski_resume.pdf';
+
     readonly links = [
         {
-            icon: 'phone-fill',
+            icon: 'telephone-fill',
             label: '(716) 866-2199',
             href: 'tel:7168662199'
         },
@@ -34,19 +36,6 @@ export class ResumeComponent {
     ];
 
     readonly sections: ResumeSectionDetail[] = [
-        // education
-        {
-            title: 'Education',
-            items: [
-                {
-                    title: 'University at Buffalo',
-                    timeline: '2011 - 2015',
-                    list: [
-                        'Bachelor of Science in Computer Science, minor in Management'
-                    ]
-                }
-            ]
-        },
         // captech experience
         {
             title: 'CapTech Consulting',
@@ -106,10 +95,23 @@ export class ResumeComponent {
                     ]
                 }
             ]
+        },
+        // education
+        {
+            title: 'Education',
+            items: [
+                {
+                    title: 'University at Buffalo',
+                    timeline: '2011 - 2015',
+                    list: [
+                        'Bachelor of Science in Computer Science, minor in Management'
+                    ]
+                }
+            ]
         }
     ];
 
     constructor(private readonly title: Title) {
-        title.setTitle('Jay Fialkowski - Resume')
+        title.setTitle('Jay Fialkowski - Resume');
     }
 }

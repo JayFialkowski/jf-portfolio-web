@@ -1,1 +1,1 @@
-export type PillVariant = 'primary' // TODO - more variants
+export type PillVariant = 'primary' | 'danger' // TODO - more variants

@@ -25,6 +25,13 @@ h6, .h6 {
   }
 }
 
+// text alignment utilities
+@each $alignment in (left, center, right) {
+  .text-#{$alignment} {
+    text-align: $alignment;
+  }
+}
+
 // links
 a.link {
   font-family: "Nunito", sans-serif;
