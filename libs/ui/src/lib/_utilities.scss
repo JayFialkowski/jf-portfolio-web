@@ -1,6 +1,38 @@
 @import "./variables";
 
 /**
+  * Flex utility classes
+ */
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex-wrap {
+  flex-wrap: wrap;
+}
+
+@each $direction in (row, column) {
+  .d-flex-#{$direction} {
+    flex-direction: $direction;
+  }
+}
+
+@each $justify in (flex-start, flex-end, center, space-between, space-around, space-evenly) {
+  .justify-content-#{$justify} {
+    justify-content: $justify;
+  }
+}
+
+@each $direction in (gap, column-gap, row-gap) {
+  @each $size, $px in $spacing {
+    .d-flex-#{$direction}-#{$size} {
+      #{$direction}: $px;
+    }
+  }
+}
+
+/**
   * Visibility utility classes
   * hide-for-{breakpoint}
   * show-for-{breakpoint}

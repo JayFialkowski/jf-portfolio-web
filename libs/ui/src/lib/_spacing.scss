@@ -1,0 +1,37 @@
+@import "./variables";
+
+$spacing-attributes: (
+  margin: "m",
+  padding: "p"
+);
+
+$spacing-directions: (
+  vertical: "x",
+  horizontal: "y",
+  left: "l",
+  right: "r",
+  top: "t",
+  bottom: "b"
+);
+
+@each $spacingAttribute, $spacingAttributeKey in $spacing-attributes {
+  @each $direction, $directionKey in $spacing-directions {
+    @each $size, $px in $spacing {
+      @if ($direction == vertical) {
+        .#{$spacingAttributeKey}#{$directionKey}-#{$size} {
+          #{$spacingAttribute}-left: $px;
+          #{$spacingAttribute}-right: $px;
+        }
+      } @else if ($direction == horizontal) {
+        .#{$spacingAttributeKey}#{$directionKey}-#{$size} {
+          #{$spacingAttribute}-top: $px;
+          #{$spacingAttribute}-bottom: $px;
+        }
+      } @else {
+        .#{$spacingAttributeKey}#{$directionKey}-#{$size} {
+          #{$spacingAttribute}-#{$direction}: $px;
+        }
+      }
+    }
+  }
+}

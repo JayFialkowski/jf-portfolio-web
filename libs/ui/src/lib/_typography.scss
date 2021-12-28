@@ -1,0 +1,43 @@
+@import "./_colors.scss";
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: color("primary");
+  margin: 0;
+}
+
+// color utility classes
+@each $name, $hex in $portfolio-colors {
+  @each $level in (100, 200, 300, 400, 500, 600, 700, 800, 900) {
+    @if ($level == 500) {
+      .text-color-#{$name} {
+        color: color($name, $level);
+      }
+    } @else {
+      .text-color-#{$name}-#{$level} {
+        color: color($name, $level);
+      }
+    }
+  }
+}
+
+// links
+a.link {
+  font-family: "Nunito", sans-serif;
+  color: color("foreground");
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-skip: spaces;
+    text-underline-offset: 2px;
+
+    i {
+      text-decoration: none;
+    }
+  }
+}

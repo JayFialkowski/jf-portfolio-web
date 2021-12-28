@@ -1,11 +1,10 @@
-@import "../core.scss";
+@import "../../lib/_colors.scss";
 
 nav {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  background-color: color("foreground");
-  border-bottom: 1px solid darkgray;
+  background-color: color("primary");
   overflow: hidden;
 
   ul {
@@ -20,12 +19,12 @@ nav {
 
       a {
         display: flex;
+        column-gap: 0.5rem;
         padding: 0.5rem 1rem;
         border-radius: 0.375rem;
         text-decoration: none;
         color: white;
         user-select: none;
-        column-gap: 0.5rem;
 
         &:hover {
           background-color: color("secondary");
