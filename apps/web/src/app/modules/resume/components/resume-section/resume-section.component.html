@@ -1,8 +1,5 @@
 <div class="resume-section">
-  <div class="resume-section-header d-flex justify-content-space-between">
-    <h2>{{model.title}}</h2>
-    <h3 *ngIf="model.timeline">{{model.timeline}}</h3>
-  </div>
+  <h2>{{model.title}}</h2>
 
   <div *ngFor="let item of model.items" class="resume-section-item">
     <div class="d-flex justify-content-space-between align-items-center">

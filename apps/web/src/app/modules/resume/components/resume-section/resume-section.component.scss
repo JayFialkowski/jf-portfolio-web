@@ -2,13 +2,10 @@
 @import "./libs/ui/src/lib/variables";
 
 .resume-section {
-  .resume-section-header {
+  h2 {
     margin-bottom: map-get($spacing, "md");
     padding-bottom: map-get($spacing, "sm");
     border-bottom: 2px solid color("accent");
-    h2, h3 {
-      margin: auto 0;
-    }
   }
 
   .resume-section-item:not(:first-of-type) {
