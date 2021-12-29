@@ -1,10 +1,10 @@
-@import "./button";
-@import "./colors";
-@import "./functions";
-@import "./layout";
-@import "./spacing";
-@import "./typography";
-@import "./utilities";
+@import "libs/ui/src/lib/styles/button";
+@import "libs/ui/src/lib/styles/colors";
+@import "libs/ui/src/lib/styles/functions";
+@import "libs/ui/src/lib/styles/layout";
+@import "libs/ui/src/lib/styles/spacing";
+@import "libs/ui/src/lib/styles/typography";
+@import "libs/ui/src/lib/styles/utilities";
 
 *:focus:not(:active) {
   outline: 2px solid color("accent");

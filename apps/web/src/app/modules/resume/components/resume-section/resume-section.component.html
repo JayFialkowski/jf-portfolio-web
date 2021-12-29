@@ -1,7 +1,11 @@
 <div class="resume-section">
   <h2>{{model.title}}</h2>
 
-  <div *ngFor="let item of model.items" class="resume-section-item">
+  <div *ngFor="let item of model.items"
+       #observer="observer"
+       [@reveal]="observer.isVisible"
+       class="resume-section-item" [class.test]="observer.visible"
+       jfObserveVisibility>
     <div class="d-flex justify-content-space-between align-items-center">
       <h3>{{item.title}}</h3>
       <h4>{{item.timeline}}</h4>

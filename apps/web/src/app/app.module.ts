@@ -6,10 +6,11 @@ import {HeaderModule} from '@web-portfolio/ui';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 import {StubComponent} from './stub.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent, StubComponent],
-    imports: [AppRoutingModule, BrowserModule, HeaderModule],
+    imports: [AppRoutingModule, BrowserAnimationsModule, HeaderModule],
     providers: [],
     bootstrap: [AppComponent]
 })

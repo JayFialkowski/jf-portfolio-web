@@ -1,2 +1,4 @@
-export * from './lib/header';
-export * from './lib/pill';
+export * from './lib/components/header';
+export * from './lib/components/pill';
+
+export * from './lib/directives/observe-visibility';
